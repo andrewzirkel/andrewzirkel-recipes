@@ -21,7 +21,7 @@
           <key>Comment</key>
           <string>Unpack LightspeedRelaySmartAgent so we can get the version from the pkg</string>
           <key>Processor</key>
-          <string>LightspeedRelaySmartAgentFlatPkgUnpacker</string>
+          <string>LightspeedRelaySmartAgentPkgUnpacker</string>
           <key>Arguments</key>
           <dict>
               <key>flat_pkg_path</key>

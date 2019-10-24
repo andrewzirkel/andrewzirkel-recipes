@@ -15,7 +15,7 @@
 # limitations under the License.xar_expand
 
 # Borrowed code and concepts from Unzipper and Copier processors.
-"""See docstring for LightspeedRelaySmartAgentFlatPkgUnpacker class"""
+"""See docstring for LightspeedRelaySmartAgentPkgUnpacker class"""
 
 import os.path
 import shutil
@@ -25,10 +25,10 @@ from glob import glob
 from autopkglib import ProcessorError
 from autopkglib.DmgMounter import DmgMounter
 
-__all__ = ["LightspeedRelaySmartAgentFlatPkgUnpacker"]
+__all__ = ["LightspeedRelaySmartAgentPkgUnpacker"]
 
 
-class LightspeedRelaySmartAgentFlatPkgUnpacker(DmgMounter):
+class LightspeedRelaySmartAgentPkgUnpacker(DmgMounter):
     """Expands a flat package using pkgutil or xar.
     For xar it also optionally skips extracting the payload."""
 
@@ -118,7 +118,7 @@ class LightspeedRelaySmartAgentFlatPkgUnpacker(DmgMounter):
             if self.env.get("skip_payload"):
                 xarcmd.extend(["--exclude", "Payload"])
             if self.env.get("exclude_path"):
-                xarcmd.extend(["--exclude", self.env["exclude_path"])
+                xarcmd.extend(["--exclude", self.env["exclude_path"]])
             proc = subprocess.Popen(
                 xarcmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE
             )
@@ -206,5 +206,5 @@ class LightspeedRelaySmartAgentFlatPkgUnpacker(DmgMounter):
 
 
 if __name__ == "__main__":
-    PROCESSOR = LightspeedRelaySmartAgentFlatPkgUnpacker()
+    PROCESSOR = LightspeedRelaySmartAgentPkgUnpacker()
     PROCESSOR.execute_shell()
